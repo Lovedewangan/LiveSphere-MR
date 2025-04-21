@@ -9,9 +9,22 @@ using TMPro;
 public class WeatherTest : MonoBehaviour
 {
     private string apiKey = "b9c43eebbc3aea606d57d84f846e0134"; // Replace with your OpenWeather API key
-    public TextMeshProUGUI weatherText;
-    public TextMeshProUGUI weatherTextSecondary; // Added secondary text display
-    public TextMeshProUGUI hoverText; // New text element to display region name on hover
+
+    // Main UI Text Fields
+    public TextMeshProUGUI stateText;
+    public TextMeshProUGUI temperatureText;
+    public TextMeshProUGUI humidityText;
+    public TextMeshProUGUI windSpeedText;
+    public TextMeshProUGUI weatherTypeText;
+
+    // Split UI Text Fields
+    public TextMeshProUGUI stateTextSecondary;
+    public TextMeshProUGUI temperatureTextSecondary;
+    public TextMeshProUGUI humidityTextSecondary;
+    public TextMeshProUGUI windSpeedTextSecondary;
+    public TextMeshProUGUI weatherTypeTextSecondary;
+
+    public TextMeshProUGUI hoverText; // Text element to display region name on hover
 
     private const string DEFAULT_HOVER_TEXT = "REGION TO BE SELECTED";
     private string currentSelectedRegion = ""; // Tracks currently selected region
@@ -72,6 +85,27 @@ public class WeatherTest : MonoBehaviour
         {
             hoverText.text = DEFAULT_HOVER_TEXT;
         }
+
+        // Initialize all text fields with empty values
+        ClearAllTextFields();
+    }
+
+    // Clear all text fields
+    private void ClearAllTextFields()
+    {
+        // Main UI
+        if (stateText != null) stateText.text = "";
+        if (temperatureText != null) temperatureText.text = "";
+        if (humidityText != null) humidityText.text = "";
+        if (windSpeedText != null) windSpeedText.text = "";
+        if (weatherTypeText != null) weatherTypeText.text = "";
+
+        // Secondary UI
+        if (stateTextSecondary != null) stateTextSecondary.text = "";
+        if (temperatureTextSecondary != null) temperatureTextSecondary.text = "";
+        if (humidityTextSecondary != null) humidityTextSecondary.text = "";
+        if (windSpeedTextSecondary != null) windSpeedTextSecondary.text = "";
+        if (weatherTypeTextSecondary != null) weatherTypeTextSecondary.text = "";
     }
 
     // This is the central function that acts as an entry point for all weather fetching operations
@@ -94,9 +128,28 @@ public class WeatherTest : MonoBehaviour
         {
             Debug.LogError($"State '{stateName}' not found in the database.");
             string errorMsg = $"State '{stateName}' not found in the database.";
-            weatherText.text = errorMsg;
-            weatherTextSecondary.text = errorMsg; // Update secondary text with the same error message
+
+            // Display error in all text fields
+            DisplayErrorMessage(errorMsg);
         }
+    }
+
+    // Display error message in all text fields
+    private void DisplayErrorMessage(string errorMsg)
+    {
+        // Main UI
+        if (stateText != null) stateText.text = errorMsg;
+        if (temperatureText != null) temperatureText.text = errorMsg;
+        if (humidityText != null) humidityText.text = errorMsg;
+        if (windSpeedText != null) windSpeedText.text = errorMsg;
+        if (weatherTypeText != null) weatherTypeText.text = errorMsg;
+
+        // Secondary UI
+        if (stateTextSecondary != null) stateTextSecondary.text = errorMsg;
+        if (temperatureTextSecondary != null) temperatureTextSecondary.text = errorMsg;
+        if (humidityTextSecondary != null) humidityTextSecondary.text = errorMsg;
+        if (windSpeedTextSecondary != null) windSpeedTextSecondary.text = errorMsg;
+        if (weatherTypeTextSecondary != null) weatherTypeTextSecondary.text = errorMsg;
     }
 
     // Reset the current selection
@@ -107,6 +160,9 @@ public class WeatherTest : MonoBehaviour
         {
             hoverText.text = DEFAULT_HOVER_TEXT;
         }
+
+        // Clear all text fields
+        ClearAllTextFields();
     }
 
     // These methods call the central function for each state
@@ -290,24 +346,40 @@ public class WeatherTest : MonoBehaviour
         else
         {
             string noDataMsg = $"No data available for {stateName}.";
-            weatherText.text = noDataMsg;
-            weatherTextSecondary.text = noDataMsg; // Update secondary text with the same message
+            DisplayErrorMessage(noDataMsg);
         }
     }
 
     void DisplayWeatherInfo(string stateName, float avgTemp, float minTemp, float maxTemp, int humidity, float windSpeed, string category)
     {
-        StringBuilder sb = new StringBuilder();
-        sb.AppendLine($"🌍 State: {stateName.ToUpper()}");
-        sb.AppendLine($"🌡 Avg Temp: {avgTemp:F1}°C (Min: {minTemp:F1}°C, Max: {maxTemp:F1}°C)");
-        sb.AppendLine($"💧 Humidity: {humidity}%");
-        sb.AppendLine($"🌬 Wind Speed: {windSpeed:F1} m/s");
-        sb.AppendLine($"☁ Weather Type: {category}");
+        // Format State text
+        string stateInfo = $"{stateName}";
 
-        string finalText = sb.ToString();
+        // Format Temperature text
+        string tempInfo = $"{avgTemp:F1}°C";
 
-        weatherText.text = finalText;
-        weatherTextSecondary.text = finalText; // Set the secondary text to match the primary text
+        // Format Humidity text
+        string humidityInfo = $"{humidity}%";
+
+        // Format Wind Speed text
+        string windInfo = $"{windSpeed:F1} m/s";
+
+        // Format Weather Type text
+        string weatherInfo = $"{category}";
+
+        // Update Main UI
+        if (stateText != null) stateText.text = stateInfo;
+        if (temperatureText != null) temperatureText.text = tempInfo;
+        if (humidityText != null) humidityText.text = humidityInfo;
+        if (windSpeedText != null) windSpeedText.text = windInfo;
+        if (weatherTypeText != null) weatherTypeText.text = weatherInfo;
+
+        // Update Secondary UI
+        if (stateTextSecondary != null) stateTextSecondary.text = stateInfo;
+        if (temperatureTextSecondary != null) temperatureTextSecondary.text = tempInfo;
+        if (humidityTextSecondary != null) humidityTextSecondary.text = humidityInfo;
+        if (windSpeedTextSecondary != null) windSpeedTextSecondary.text = windInfo;
+        if (weatherTypeTextSecondary != null) weatherTypeTextSecondary.text = weatherInfo;
     }
 }
 
