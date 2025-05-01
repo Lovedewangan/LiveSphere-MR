@@ -22,6 +22,7 @@ public class FindPositionForEnvironmentSpawns : MonoBehaviour
     public float separationDistance = 0.1f;
 
     private List<Vector3> previousPositions = new List<Vector3>();
+    private List<GameObject> spawnedObjects = new List<GameObject>(); // To track all spawned objects
 
     void Start()
     {
@@ -44,7 +45,6 @@ public class FindPositionForEnvironmentSpawns : MonoBehaviour
 
         MRUKRoom room = MRUK.Instance.GetCurrentRoom();
         List<Vector3> newPositions = new List<Vector3>();
-
         int currentTry = 0;
 
         while (currentTry < spawnTry)
@@ -60,15 +60,14 @@ public class FindPositionForEnvironmentSpawns : MonoBehaviour
             if (hasFoundPosition && IsDistinctPosition(pos))
             {
                 Vector3 spawnPosition = pos + norm * normalOffset;
-
                 // Randomly choose a prefab from the array
                 GameObject selectedPrefab = GetRandomPrefab();
                 if (selectedPrefab != null)
                 {
-                    Instantiate(selectedPrefab, spawnPosition, Quaternion.identity);
+                    GameObject spawnedObject = Instantiate(selectedPrefab, spawnPosition, Quaternion.identity);
+                    spawnedObjects.Add(spawnedObject); // Add spawned object to the list
                     newPositions.Add(pos);
                 }
-
                 return; // Remove this line if you want to continue trying for more spawns in one call
             }
             else
@@ -76,7 +75,6 @@ public class FindPositionForEnvironmentSpawns : MonoBehaviour
                 currentTry++;
             }
         }
-
         previousPositions.AddRange(newPositions);
     }
 
@@ -94,8 +92,22 @@ public class FindPositionForEnvironmentSpawns : MonoBehaviour
     {
         if (prefabsToSpawn.Length == 0)
             return null;
-
         int randomIndex = Random.Range(0, prefabsToSpawn.Length);
         return prefabsToSpawn[randomIndex];
+    }
+
+    // New method to delete all spawned objects
+    public void DeleteAllSpawnedObjects()
+    {
+        foreach (GameObject obj in spawnedObjects)
+        {
+            if (obj != null)
+            {
+                Destroy(obj);
+            }
+        }
+
+        spawnedObjects.Clear();
+        previousPositions.Clear();
     }
 }

@@ -70,6 +70,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 5833238976972407889}
   speed: 1
+  wanderRadius: 5
+  waitTime: 0
 --- !u!1001 &3272154977381915424
 PrefabInstance:
   m_ObjectHideFlags: 0

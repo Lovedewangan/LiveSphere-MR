@@ -23,6 +23,8 @@ public class CanvasMover : MonoBehaviour
     {
         if (!isMoved)
         {
+
+            
             uiToMove1.SetActive(true);
             uiToMove2.SetActive(true);
             if (uiToDeactivate != null) uiToDeactivate.SetActive(false);
