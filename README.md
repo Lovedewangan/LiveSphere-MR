@@ -1,38 +1,48 @@
-# Minor-Project-2-MR
+# 🌍 Minor-Project-2-MR: **LiveSphere - Mixed Reality Environmental Explorer**
 
-## Overview
-Environmental degradation and climate change have led to a weakened connection between biodiversity and human well-being. Many environmental monitoring systems present data in formats that are difficult for non-experts to interpret. Additionally, urbanization has contributed to a growing disconnect between people and their natural surroundings. To bridge this gap, we propose a Mixed Reality (MR) application that provides an interactive and immersive experience for users, making environmental data more accessible, engaging, and educational. This MR system will enhance environmental awareness while promoting adaptive wellness through interaction with real-time ecological information.
+## 🚀 Overview
+**LiveSphere** is an immersive Mixed Reality (MR) application designed to bridge the gap between people and nature by transforming complex environmental data into an intuitive, engaging, and interactive experience. Using gesture-based interactions, real-time data integration, and region-specific simulations, this application enhances environmental awareness, promotes adaptive wellness, and supports sustainability education.
 
-## Problem Statement 
-Environmental monitoring systems often present data in complex formats, making it challenging for the general public to understand and engage with. Urbanization has further distanced people from nature, reducing their awareness of biodiversity and climate change issues. Our Mixed Reality Application addresses these challenges by offering an engaging, interactive MR interface that intuitively presents real-time environmental data, fostering awareness and promoting adaptive wellness.
+## ❓ Problem Statement
+Environmental monitoring systems often present data in highly technical or fragmented formats, limiting public understanding and engagement. Rapid urbanization has also reduced people’s interaction with natural ecosystems. Our MR solution simplifies and gamifies this data through a hands-free, gesture-controlled platform, allowing users to explore biodiversity, climate patterns, and monuments in an immersive and accessible way.
 
-## Objectives
-- Develop a real-time collaborative whiteboard platform for multiple users.
-- Enable different drawing pens and shape creation.
-- Include real-time drawing with custom color and stroke adjustments.
-- Support action history, version control, and role-based access control (RBAC).
-- Provide session and state management with export options for saving whiteboard content.
+## 🎯 Key Objectives
+- Visualize real-time environmental data (biodiversity, weather, monuments) through an interactive MR interface.
+- Enable continent and country selection via gestures, with GDP-based ranking for insights.
+- Provide region-specific experiences including:
+  - Simulated snowfall, sandstorms, and climate effects.
+  - Visual exploration of endangered species and biodiversity hotspots.
+  - 3D interactive monuments with scale control.
+- Allow deep-dive into **India’s map**, with state-wise interaction and simulations.
+- Implement custom gestures for UI split, object manipulation, and navigation.
 
-## Technologies Used
-- **Tools**: Unity Engine, Figma, Blender
-- **SDKs**: Mixed Reality Toolkit (MRTK), Meta All-in-One SDK, XR Interaction Toolkit
-- **Programming Language**: C# (C-Sharp)
-- **Hardware**: Meta Quest 3 / Meta Quest Pro
+## 🛠 Technologies Used
+- **Engine:** Unity
+- **Design & Modeling:** Figma, Blender
+- **SDKs:** Mixed Reality Toolkit (MRTK), Meta XR All-in-One SDK, XR Interaction Toolkit
+- **Language:** C#
+- **Hardware:** Meta Quest 3 / Meta Quest Pro
 
-## Scope of the project
-Through an interactive interface, our MR application integrates real-time environmental data, such as wildlife tracking, biodiversity metrics, and weather conditions. This platform aims to:
+## 🧠 Features & Capabilities
+- 🌐 **Multi-Continent Interaction**: Tap on any continent to load its map on your palm.
+- 📈 **Country Ranking by GDP**: Select top 3 countries in a continent for focused insight.
+- ✋ **Gesture-Controlled Palm UI**: Tap on palm buttons for:
+  - Biodiversity 🌿
+  - Weather ☁️
+  - Monuments 🏛️
+- 🌦️ **Environmental Simulation**:
+  - Snowfall, rain, or sandstorm depending on selected geography.
+- 🦜 **Biodiversity**: View endangered species and fauna of the region.
+- 🏯 **Monuments**: Explore and scale monuments interactively.
+- 🧤 **Custom Gestures**: UI split, object rotation, scaling, selection, and more.
 
-1. **Enhance Awareness**
-- Provide real-time data on biodiversity, wildlife, and air quality.
-- Allow users to explore and interact with environmental data dynamically.
+## 🌍 Scope of the Project
+This MR platform aims to:
 
-2. **Support Education & Conservation**
-- Serve as an engaging tool for teaching environmental topics.
-- Raise awareness and support sustainability efforts.
+### 1. Enhance Awareness
+- Deliver real-time environmental data and visualizations.
+- Strengthen public connection to nature through immersive exploration.
 
-## Future Work
-- **Integration with Citizen Science**: Enable users to contribute by collecting and reporting environmental data through the MR system.
-- **Predictive Environmental Modeling**: Use machine learning to forecast environmental changes and provide early warnings for biodiversity loss or climate change impacts.
-- **Social Features**: Implement community engagement features, such as shared environmental challenges and collaborative conservation projects.
-- **Extended Reality (XR) Support**: Expand to include Virtual Reality (VR) and Augmented Reality (AR) for wider accessibility.
-- **Expanded Sensor Network**: Incorporate additional environmental sensors to enhance geographical coverage and data precision.
+### 2. Support Education & Conservation
+- Engage students, researchers, and citizens in climate and biodiversity topics.
+- Promote sustainable behavior through experiential learning.
